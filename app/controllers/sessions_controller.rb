@@ -10,10 +10,10 @@ class SessionsController < ApplicationController
                 # debugger
                 render json: user, status: :created
             else
-                render json: {error: "Invalid password"}, status: :unauthorized
+                render json: {error: "Invalid password!"}, status: :unauthorized
             end
         else
-            render json: {error: "Invalid username"}, status: :unauthorized
+            render json: {error: "Email not found, please sign up!"}, status: :unauthorized
 
         end
     end

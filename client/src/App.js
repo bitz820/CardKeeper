@@ -1,10 +1,11 @@
 import './App.css';
 import React, {useEffect, useState} from 'react'
-import Signup from './Signup.js';
-import Login from './Login.js';
+import Signup from './Components/Signup.js';
+import Login from './Components/Login.js';
 
 function App() {
   const [currentUser, setCurrentUser] = useState("")
+  const [showSignUp, setShowSignUp] = useState(false)
 
   useEffect(() => {
     fetch("/auth")
@@ -21,13 +22,24 @@ function App() {
     .then(setCurrentUser(""))
   }
 
-  if (!currentUser) return <Login setCurrentUser={setCurrentUser} />
+  const signUpForm = () => {
+    setShowSignUp(!showSignUp)
+  }
+
+  if (!currentUser) return (
+    <>
+    <Login setCurrentUser={setCurrentUser} />
+     Don't have an account? <button onClick={signUpForm}>Click to Sign Up!</button>
+    {showSignUp ? <Signup /> : null}
+    </>)
 
   return (
     <div className="App">
         <h1>Hi {currentUser.name}!</h1>
-          <Signup />
-          <Login setCurrentUser={setCurrentUser}/>
+          {/* <Signup /> */}
+          {/* <Login setCurrentUser={setCurrentUser}/> */}
+         
+          <br/>
           <button onClick={handleLogout}>Logout!</button>
     </div>
   );
