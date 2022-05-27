@@ -2,12 +2,24 @@ import React from "react"
 
 function CardDetails() {
     return (
-    <div>
+    <div className="card-details">
         <div>
-            Card Detail 1
+            Name
         </div>
         <div>
-            Card Detail 2
+            Description
+        </div>
+        <div>
+            Benefits
+        </div>
+        <div>
+            Annual Fee
+        </div>
+        <div>
+            Welcome Bonus
+        </div>
+        <div>
+            APR
         </div>
     </div>
     )}
