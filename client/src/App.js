@@ -12,6 +12,8 @@ function App() {
   const [currentUser, setCurrentUser] = useState("")
   const [showSignUp, setShowSignUp] = useState(false)
 
+
+// Authorize User is logged in
   useEffect(() => {
     fetch("/auth")
       .then(res => {
@@ -21,12 +23,14 @@ function App() {
       })
   }, [])
 
+  // Log User Out
   const handleLogout = () => {
     fetch("/logout", { method: "DELETE" })
       .then(r => r.json())
       .then(setCurrentUser(""))
   }
 
+  // Toggle Sign Up Form
   const signUpForm = () => {
     setShowSignUp(!showSignUp)
   }
@@ -48,7 +52,7 @@ function App() {
           <Home />
         </Route>
         <Route exact path="/profile">
-          <User />
+          <User userDetails={currentUser}/>
         </Route>
         <Route exact path="/allCards">
           <AllCards />
