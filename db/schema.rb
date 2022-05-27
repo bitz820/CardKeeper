@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_26_185120) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_26_221811) do
   create_table "credit_cards", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_185120) do
     t.integer "credit_card_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "\"user\", \"credit_card\"", name: "index_favorite_cards_on_user_and_credit_card", unique: true
     t.index ["credit_card_id"], name: "index_favorite_cards_on_credit_card_id"
     t.index ["user_id"], name: "index_favorite_cards_on_user_id"
   end
@@ -36,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_185120) do
     t.string "name"
     t.integer "age"
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
