@@ -19,16 +19,16 @@ const NavStyle = styled.div`
     margin-bottom: 30px;
     justify-content: space-around;
 `
+  const StyledLink = styled(NavLink)`
+      width: 100%;
+      padding: 12px;
+      margin:  6px 6px;
+      background: #357266;
+      border: #312509 6px solid;
+      text-decoration: none;
+      color: white;
+  `
 
-const StyledLink = styled(NavLink)`
-    width: 100%;
-    padding: 12px;
-    margin:  6px 6px;
-    background: #357266;
-    border: #312509 6px solid;
-    text-decoration: none;
-    color: white;
-`
 
 function NavBar() {
   return (
