@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useEffect, useState } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, useHistory } from 'react-router-dom'
 import NavBar from "./Components/NavBar"
 import Home from "./Components/Home"
 import AllCards from "./Components/AllCards"
@@ -11,7 +11,7 @@ import Login from './Components/Login.js'
 function App() {
   const [currentUser, setCurrentUser] = useState("")
   const [showSignUp, setShowSignUp] = useState(false)
-
+  // const history = useHistory()
 
 // Authorize User is logged in
   useEffect(() => {
@@ -32,6 +32,7 @@ function App() {
 
   // Toggle Sign Up Form
   const signUpForm = () => {
+    // history.push("/signup")
     setShowSignUp(!showSignUp)
   }
 
@@ -52,7 +53,7 @@ function App() {
           <Home />
         </Route>
         <Route exact path="/profile">
-          <User userDetails={currentUser}/>
+          <User setCurrentUser={setCurrentUser} userDetails={currentUser}/>
         </Route>
         <Route exact path="/allCards">
           <AllCards />
